@@ -1,4 +1,5 @@
 import java.util.*;
+//프로그래머스 lv2 문제번호: 12939
 public class max_min_12939 {
     public String solution(String s) {
         String [] parts = s.split(" ");
