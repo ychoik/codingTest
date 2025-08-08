@@ -5,22 +5,23 @@ public class subsetRecursive {
 
     static int N =3;
     static int arr[] = {1,2,3};
-    static boolean [] used = new boolean[N];
+    static boolean [] used = new boolean[N];// 뽑았는지 표시하는 배열
 
     public static void main(String[] args)
     {
-        dfs(0);
+        dfs(0);// 0번째 부터 시작
     }
 
 public static void dfs(int depth)
 {
+    // 재귀함수: 각 숫자를 뽑을지 말지 정하는 함수
     if(depth==N)
     {
-        boolean isEmpty = true;
+        boolean isEmpty = true; //아무것도 뽑은 게 없으면 true
 
         for(int i=0; i<N;i++)
         {
-            if(used[i])
+            if(used[i])// i번째 숫자를 뽑았다면
             {
                 System.out.print(arr[i]+" ");
                 isEmpty = false;
@@ -29,7 +30,7 @@ public static void dfs(int depth)
 
         }
 
-        if(!isEmpty)
+        if(!isEmpty) // 공집합 아니면 줄 바꿈
         {
             System.out.println();
         }
