@@ -1,11 +1,3 @@
-
-class split{
-
-
-
-}
-
-
 public class split_toCharArray_diff {
 
     public static void main(String[] args) {
