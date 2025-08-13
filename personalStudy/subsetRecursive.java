@@ -27,7 +27,6 @@ public static void dfs(int depth)
                 isEmpty = false;
             }
 
-
         }
 
         if(!isEmpty) // 공집합 아니면 줄 바꿈
@@ -51,3 +50,5 @@ public static void dfs(int depth)
 }
 
 }
+
+// 두 번쨰 복습
