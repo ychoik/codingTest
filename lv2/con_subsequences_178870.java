@@ -1,31 +1,34 @@
+import java.util.ArrayList;
 
 class Solution_178870 {
     public int[] solution(int[] sequence, int k) {
-        int[] answer = {};
-        answer=new int[2];
-        int x=0;
-        int start=0;
-        int end=0;
-        for(int i=0; i<sequence.length; i++)
+        int[] answer = new int[2];
+
+        int minLength = Integer.MAX_VALUE; // 가장 짧은 길이를 저장할 변수
+        int start = 0;
+        int currentSum = 0;
+        for(int end=0; end<sequence.length; end++)
         {
-            x=sequence[i];
-            for(int j=i+1; j<sequence.length; j++)
+            currentSum += sequence[end];
+
+            while(currentSum > k)
             {
-                x+=sequence[j];
-                if(x>k)
+                currentSum -= sequence[start];
+                start++;
+            }
+
+            if(currentSum == k)
+            {
+                int currentLength = end - start;
+                if(currentLength < minLength)
                 {
-                    break;
-                }
-                else if(x==k)
-                {
-                    start = i;
-                    end = j;
+                    minLength = currentLength;
+                    answer[0] = start;
+                    answer[1] = end;
                 }
             }
-        }
 
-        answer[0] = start;
-        answer[1] = end;
+        }
 
         return answer;
 
