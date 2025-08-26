@@ -19,6 +19,7 @@ public class startsWith {
         boolean checkFromWrongPlace = text.startsWith("Hello", 6); // false
 
 
-        //두 번째 복습 완료
+        //두 번째 복습 완료!
     }
+
 }
