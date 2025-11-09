@@ -1,4 +1,6 @@
 
+//https://www.acmicpc.net/problem/1012
+
 import java.util.*;
 public class bfs_boj1012 {
 
