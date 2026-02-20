@@ -15,11 +15,13 @@ public class startsWith {
         // H e l l o   W o r l d
         // 0 1 2 3 4 5 6 7 8 9 10
         boolean checkFromMiddle = text.startsWith("World", 6); // true
-
         boolean checkFromWrongPlace = text.startsWith("Hello", 6); // false
 
 
-        //두 번째 복습 완료!
+        //세 번째 복습 완료!
+
+
+
     }
 
 }
