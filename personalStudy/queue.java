@@ -1,6 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Deque;
-
+//이거 활용해서 bfs 문제풀이 가능
 public class queue {
     public static void main(String[] args) {
         Deque<Integer> q = new ArrayDeque<>();
