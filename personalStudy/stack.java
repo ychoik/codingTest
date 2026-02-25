@@ -3,6 +3,7 @@ import java.util.Deque;
 
 //닫는 괄호를 만났을 때 스택 맨 위가 짝인지 확인하는 문제.
 //스택 pop 할 때는  isEmpty 항상 생각하기
+//복습완료. 프로그래머스에서도 풂
 
 public class stack {
     static boolean isValid(String s){
