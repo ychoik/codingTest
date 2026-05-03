@@ -5,5 +5,3 @@ left join ANIMAL_INS i
 on o.ANIMAL_ID = i.ANIMAL_ID
 where i.ANIMAL_ID IS NULL
 order by o.ANIMAL_ID;
-
-
