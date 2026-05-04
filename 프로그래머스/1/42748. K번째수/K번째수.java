@@ -21,6 +21,7 @@ class Solution {
             }
             Arrays.sort(temp);
             answer[idx] = temp[l-1];
+            //Arrays.copyOfRange(array, i-1, j);
             //System.out.println(Arrays.toString(temp));
             
         }
