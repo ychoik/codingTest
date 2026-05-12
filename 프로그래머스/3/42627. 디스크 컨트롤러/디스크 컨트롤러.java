@@ -2,7 +2,7 @@ import java.util.*;
 class Solution {
     public int solution(int[][] jobs) {
         int answer = 0;
-        // 소요시간 > 요청 시각> 번호
+        // 우선순위 : 소요시간 > 요청 시각> 번호
         
         int n = jobs.length;
         int arr[][] = new int [n][3];
@@ -18,14 +18,15 @@ class Solution {
         }
         
         //요청시각 기준으로 정렬, 요청시각이 같다면 작업 번호가 적은 순서로 정렬
-        //이유: 현재 시간까지 요청된 작업만 우선순위 큐에 넣어야 해서
+        //이유: 현재 시간까지 요청된 작업만 우선순위 큐에 넣어야 해서, 요청 시각 순서대로 작업을 확인하기 위한 준비
         Arrays.sort(arr, (a,b)->{
             if(a[1]!=b[1]){
-                return a[1]-b[1];
+                return a[1]-b[1]; // 오름차순 정렬
             }
             return a[0]-b[0];
         });
         
+        //소요시간 기준 가장 짧은 걸 먼저 꺼낸다.
         Queue<int[]> pq = new PriorityQueue<>((a,b)->{
             if(a[2]!=b[2]){
                 return a[2]-b[2];
@@ -36,7 +37,7 @@ class Solution {
             return a[0]-b[0];
         });
         
-        int time=0;//현재시간
+        int time=0; //현재시간
         int index =0; //아직 우선순위 큐에 넣지 않은 작업 위치
         int count=0; //처리 완료한 작업 개수
         int total=0; //모든 작업의 반환 시간 합
@@ -44,6 +45,7 @@ class Solution {
         while(count<n){
             
             //현재시간까지 요청된 작업들을 넣기
+             // 이 작업의 요청 시각이 현재 시간보다 작거나 같으면 이미 요청이 들어온 작업
             while(index<n && arr[index][1]<= time)
             {
                 pq.offer(arr[index]);
