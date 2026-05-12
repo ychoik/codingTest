@@ -12,47 +12,41 @@ class Solution {
         
         for(int i=0; i<n; i++)
         {
-            arr[i][0]=i; //작업번호
-            arr[i][1]=jobs[i][0]; //요청 시각
-            arr[i][2]=jobs[i][1]; //소요 시간
+            arr[i][0] = i;
+            arr[i][1] = jobs[i][0];
+            arr[i][2] = jobs[i][1];
         }
         
-        //요청시각 기준으로 정렬, 요청시각이 같다면 작업 번호가 적은 순서로 정렬
-        //이유: 현재 시간까지 요청된 작업만 우선순위 큐에 넣어야 해서, 요청 시각 순서대로 작업을 확인하기 위한 준비
         Arrays.sort(arr, (a,b)->{
-            if(a[1]!=b[1]){
-                return a[1]-b[1]; // 오름차순 정렬
-            }
-            return a[0]-b[0];
-        });
-        
-        //소요시간 기준 가장 짧은 걸 먼저 꺼낸다.
-        Queue<int[]> pq = new PriorityQueue<>((a,b)->{
-            if(a[2]!=b[2]){
-                return a[2]-b[2];
-            }
             if(a[1]!=b[1]){
                 return a[1]-b[1];
             }
-            return a[0]-b[0];
+            return a[0] - b[0];
         });
         
-        int time=0; //현재시간
-        int index =0; //아직 우선순위 큐에 넣지 않은 작업 위치
-        int count=0; //처리 완료한 작업 개수
-        int total=0; //모든 작업의 반환 시간 합
+        Queue<int []> pq = new PriorityQueue<>((a,b)->{
+            if(a[2] != b[2]){
+                return a[2]-b[2];
+            }
+            if(a[1] != b[1]){
+                return a[1] - b[1];
+            }
+            return a[0] - b[0];
+        });
         
-        while(count<n){
+        int time =0;
+        int index = 0;
+        int count =0;
+        int total =0;
+        
+        while(count < n){
             
-            //현재시간까지 요청된 작업들을 넣기
-             // 이 작업의 요청 시각이 현재 시간보다 작거나 같으면 이미 요청이 들어온 작업
-            while(index<n && arr[index][1]<= time)
-            {
+            while(index < n && arr[index][1] <= time){
                 pq.offer(arr[index]);
                 index++;
             }
             
-            if(pq.isEmpty())//작업이 없는 경우
+            if(pq.isEmpty())
             {
                 time = arr[index][1];
                 continue;
@@ -60,17 +54,18 @@ class Solution {
             
             int [] job = pq.poll();
             
-            int requestTime = job[1]; //요청시각
-            int workTime = job[2]; //소요시간
+            int requestTime = job[1]; // 요청시각
+            int workTime = job[2]; // 소요시간
             
-            time+= workTime;
-            
+            time += workTime;
             total += time - requestTime;
             count++;
             
         }
         
-        
         return total/n;
+        
+        
+       
     }
 }
