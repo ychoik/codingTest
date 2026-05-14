@@ -1,35 +1,40 @@
 import java.util.*;
 class Solution {
     
-    boolean[] visited;
-    
     public int solution(int n, int[][] computers) {
         int answer = 0;
-        
-        visited = new boolean[n];//중요한 기준은 방문 여부
+        boolean[] visited = new boolean[n];
         
         for(int i=0; i<n; i++)
         {
             if(!visited[i]){
                 answer++;
-                dfs(i, n, computers);
+                bfs(i, n, computers, visited);
             }
-            
         }
-        
         
         return answer;
     }
     
-    public void dfs(int current, int n, int[][]computers){
-        visited[current] = true;
+    public void bfs(int start, int n, int[][] computers, boolean[] visited){
+                
+        Deque<Integer> q = new ArrayDeque<>();
+        visited[start]=true;
+        q.offer(start);
         
-        for(int next =0; next<n; next++)
+        while(!q.isEmpty())
         {
-            if(computers[current][next]==1 && !visited[next]){
-                dfs(next, n, computers);
+            int current =q.poll();
+            for(int next=0; next<n; next++)
+            {
+                if(computers[current][next]==1 && !visited[next]){
+                    visited[next]=true;
+                    q.offer(next);
+                }
             }
+            
         }
+        
         
     }
 }
