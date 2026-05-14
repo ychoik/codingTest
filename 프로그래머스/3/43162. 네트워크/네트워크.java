@@ -6,7 +6,7 @@ class Solution {
     public int solution(int n, int[][] computers) {
         int answer = 0;
         
-        visited = new boolean[n];
+        visited = new boolean[n];//중요한 기준은 방문 여부
         
         for(int i=0; i<n; i++)
         {
