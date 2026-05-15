@@ -19,9 +19,9 @@ class Solution {
         
         Arrays.sort(arr, (a,b)->{
             if(a[1]!=b[1]){
-                return a[1]-b[1];
+                return a[1]-b[1]; // 정렬에서 양수가 나오면 보통 a가 b보다 뒤로 감. 1번째를 기준으로 정렬 
             }
-            return a[0] - b[0];
+            return a[0] - b[0];//0번째를 기준으로 정렬
         });
         
         Queue<int []> pq = new PriorityQueue<>((a,b)->{
