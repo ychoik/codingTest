@@ -6,18 +6,17 @@ class Solution {
 
         Queue<String> q = new ArrayDeque<>();
         boolean[] visited = new boolean[words.length];
-
         q.offer(begin);
 
-        // 큐에 탐색할 단어가 남아 있는 동안 반복
         while (!q.isEmpty()) {
-            // 현재 단계에서 처리할 단어 개수
+            // 현재 단계에서 꺼낼 단어 개수
             int size = q.size();
 
+            // 같은 변환 횟수의 단어들을 모두 처리
             for (int k = 0; k < size; k++) {
                 String current = q.poll();
 
-                // 목표 단어에 도착하면 최소 변환 횟수 반환
+                // 목표 단어에 도착하면 변환 횟수 반환
                 if (current.equals(target)) {
                     return answer;
                 }
@@ -28,16 +27,16 @@ class Solution {
 
                     int diff = 0;
 
-                    // 서로 다른 글자의 개수 세기
+                    // 현재 단어와 몇 글자가 다른지 확인
                     for (int j = 0; j < current.length(); j++) {
                         if (current.charAt(j) != words[i].charAt(j)) {
                             diff++;
                         }
                     }
 
-                    // 한 글자만 다르면 다음 단계에서 탐색
+                    // 한 글자만 다르면 변환 가능
                     if (diff == 1) {
-                        visited[i] = true;
+                        visited[i] = true; // 큐에 넣을 때 방문 표시
                         q.offer(words[i]);
                     }
                 }
@@ -47,6 +46,6 @@ class Solution {
             answer++;
         }
 
-        return 0; // 목표 단어에 도달하지 못한 경우
+        return 0; // 목표 단어로 변환할 수 없는 경우
     }
 }
